@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -14,5 +15,6 @@ def generate_output():
     return render_template('index.html', output=user_input)
 
 if __name__ == '__main__':
-    #app.run(debug=True)
-    app.run() #, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    # Use the PORT environment variable to set the port number
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
